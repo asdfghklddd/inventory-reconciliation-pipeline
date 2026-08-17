@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "inventory-reconciliation-pipeline"
+version = "1.0.0"
+description = "A safe check/apply pipeline for reconciling synthetic inventory workbooks."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+authors = [{name = "Andy"}]
+dependencies = ["openpyxl==3.1.5"]
+
+[project.optional-dependencies]
+dev = ["pytest==9.0.3"]
+
+[project.scripts]
+inventory-reconcile = "inventory_reconciliation.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["inventory_reconciliation"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
